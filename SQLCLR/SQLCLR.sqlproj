@@ -60,6 +60,7 @@
     <Folder Include="PublishProfiles" />
     <Folder Include="Scalar Functions" />
     <Folder Include="Table Functions" />
+    <Folder Include="Aggregate Functions" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -69,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Scalar Functions\BankersRound.cs" />
     <Compile Include="Table Functions\NextToken.cs" />
+    <Compile Include="Aggregate Functions\Concatenate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\SQLCLR.publish.xml" />
