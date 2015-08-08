@@ -74,7 +74,7 @@ public class Concatenate : IBinarySerialize
         _delimiter = r.ReadString();
         int count = r.ReadInt32();
         _elements = new List<string>();
-        for(int i=0; i< count; i++)
+        for(int i=0; i < count; i++)
         {
             _elements.Add(r.ReadString());
         }

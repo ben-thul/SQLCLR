@@ -71,6 +71,8 @@
     <Compile Include="Scalar Functions\BankersRound.cs" />
     <Compile Include="Table Functions\NextToken.cs" />
     <Compile Include="Aggregate Functions\Concatenate.cs" />
+    <Compile Include="Aggregate Functions\DumbSum.cs" />
+    <Compile Include="Aggregate Functions\SmarterSum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\SQLCLR.publish.xml" />
