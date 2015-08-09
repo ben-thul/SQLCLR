@@ -23,7 +23,10 @@ public struct SmarterSum
 
     public void Accumulate(SqlDouble Value)
     {
-        _sum += Value.Value;
+        if(Value.IsNull == false)
+        {
+        _sum  += Value.Value;
+        }
     }
 
     public void Merge (SmarterSum Group)
