@@ -61,6 +61,7 @@
     <Folder Include="Scalar Functions" />
     <Folder Include="Table Functions" />
     <Folder Include="Aggregate Functions" />
+    <Folder Include="Table Functions\Helper Functions" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -69,12 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Scalar Functions\BankersRound.cs" />
-    <Compile Include="Table Functions\NextToken.cs" />
     <Compile Include="Aggregate Functions\Concatenate.cs" />
     <Compile Include="Aggregate Functions\DumbSum.cs" />
     <Compile Include="Aggregate Functions\SmarterSum.cs" />
     <Compile Include="Scalar Functions\FormatCurrency.cs" />
     <Compile Include="Aggregate Functions\Median.cs" />
+    <Compile Include="Table Functions\Helper Functions\NextToken.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\SQLCLR.publish.xml" />
