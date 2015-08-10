@@ -74,6 +74,7 @@
     <Compile Include="Aggregate Functions\DumbSum.cs" />
     <Compile Include="Aggregate Functions\SmarterSum.cs" />
     <Compile Include="Scalar Functions\FormatCurrency.cs" />
+    <Compile Include="Aggregate Functions\Median.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\SQLCLR.publish.xml" />
