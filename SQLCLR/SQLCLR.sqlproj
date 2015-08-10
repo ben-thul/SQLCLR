@@ -62,11 +62,13 @@
     <Folder Include="Table Functions" />
     <Folder Include="Aggregate Functions" />
     <Folder Include="Table Functions\Helper Functions" />
+    <Folder Include="User Defined Types" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Scalar Functions\BankersRound.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Scalar Functions\FormatCurrency.cs" />
     <Compile Include="Aggregate Functions\Median.cs" />
     <Compile Include="Table Functions\Helper Functions\NextToken.cs" />
+    <Compile Include="User Defined Types\ComplexNumber.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\SQLCLR.publish.xml" />
