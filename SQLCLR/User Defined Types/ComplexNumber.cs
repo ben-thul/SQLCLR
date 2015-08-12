@@ -4,11 +4,16 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 using System.Numerics;
+using System.Text.RegularExpressions;
+using System.IO;
 
 
 [Serializable]
-[Microsoft.SqlServer.Server.SqlUserDefinedType(Format.Native)]
-public struct ComplexNumber: INullable
+[SqlUserDefinedType(
+    Format.UserDefined,
+    MaxByteSize = 2 * sizeof(double) + sizeof(bool)
+)]
+public struct ComplexNumber: INullable, IBinarySerialize
 {
     private Complex _complex;
     private bool _null;
@@ -22,7 +27,7 @@ public struct ComplexNumber: INullable
     public override string ToString()
     {
         // Replace with your own code
-        return string.Format("({0}, {1})", _real, _imaginary);
+        return _complex.ToString();
     }
     
     public bool IsNull
@@ -48,9 +53,16 @@ public struct ComplexNumber: INullable
     {
         if (s.IsNull)
             return Null;
-        ComplexNumber u = new ComplexNumber();
-        // Put your code here
-        return u;
+        ComplexNumber cn = new ComplexNumber();
+        Regex r = new Regex(
+            @"^\(([0-9+-.]+), ([0-9+-.]+)\)$"
+        );
+        MatchCollection matches = r.Matches(s.Value);
+        GroupCollection groups = matches[0].Groups;
+        double real = double.Parse(groups[1].Value);
+        double imaginary = double.Parse(groups[2].Value);
+        cn._complex = new Complex(real, imaginary);
+        return cn;
     }
     
     // This is a place-holder method
@@ -64,7 +76,6 @@ public struct ComplexNumber: INullable
         return new ComplexNumber(Complex.Subtract(_complex, other._complex));
     }
 
-
     public ComplexNumber Multiply(ComplexNumber other)
     {
         return new ComplexNumber(Complex.Multiply(_complex, other._complex));
@@ -72,6 +83,45 @@ public struct ComplexNumber: INullable
 
     public ComplexNumber Divide(ComplexNumber other)
     {
-        return new ComplexNumber(Complex.Divide(_complex, other._complex)));
+        return new ComplexNumber(Complex.Divide(_complex, other._complex));
+    }
+
+    public SqlDouble Real
+    {
+        get
+        {
+            return new SqlDouble(_complex.Real);
+        }
+    }
+
+    public SqlDouble Imaginary
+    {
+        get
+        {
+            return new SqlDouble(_complex.Imaginary);
+        }
+    }
+
+    public SqlDouble Magnitude
+    {
+        get
+        {
+            return new SqlDouble(_complex.Magnitude);
+        }
+    }
+
+    public void Read(BinaryReader r)
+    {
+        _null = r.ReadBoolean();
+        double real = r.ReadDouble();
+        double imaginary = r.ReadDouble();
+        _complex = new Complex(real, imaginary);
+    }
+
+    public void Write(BinaryWriter w)
+    {
+        w.Write(_null);
+        w.Write(_complex.Real);
+        w.Write(_complex.Imaginary);
     }
 }
