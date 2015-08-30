@@ -87,4 +87,7 @@
     <Compile Include="Table Functions\RegexSplit.cs" />
     <Compile Include="Table Functions\StringSplit.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="DebugScript.sql" />
+  </ItemGroup>
 </Project>
