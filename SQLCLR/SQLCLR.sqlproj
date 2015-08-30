@@ -79,6 +79,7 @@
     <Compile Include="Aggregate Functions\Median.cs" />
     <Compile Include="Table Functions\Helper Functions\NextToken.cs" />
     <Compile Include="User Defined Types\ComplexNumber.cs" />
+    <Compile Include="Scalar Functions\RegexMatch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\SQLCLR.publish.xml" />
