@@ -3,7 +3,11 @@ using System.Globalization;
 
 public partial class UserDefinedFunctions
 {
-    [Microsoft.SqlServer.Server.SqlFunction]
+    [Microsoft.SqlServer.Server.SqlFunction(
+        IsDeterministic = true, 
+        IsPrecise = true, 
+        DataAccess = Microsoft.SqlServer.Server.DataAccessKind.None,
+    )]
     public static SqlString FormatCurrency(SqlDouble Amount, SqlString culture)
     {
         string _culture;
@@ -19,7 +23,7 @@ public partial class UserDefinedFunctions
             CultureInfo ci = new CultureInfo(_culture);
             return new SqlString(Amount.Value.ToString("C", ci));
         }
-        catch (CultureNotFoundException e)
+        catch (CultureNotFoundException)
         {
             return new SqlString("Invalid culture");
         }
