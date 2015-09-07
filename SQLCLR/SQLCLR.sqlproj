@@ -63,6 +63,7 @@
     <Folder Include="Aggregate Functions" />
     <Folder Include="Table Functions\Helper Functions" />
     <Folder Include="User Defined Types" />
+    <Folder Include="User Defined Types\DurationFunctions" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -80,6 +81,13 @@
     <Compile Include="Table Functions\Helper Functions\NextToken.cs" />
     <Compile Include="User Defined Types\ComplexNumber.cs" />
     <Compile Include="Scalar Functions\RegexMatch.cs" />
+    <Compile Include="User Defined Types\Duration.cs" />
+    <Compile Include="User Defined Types\DurationFunctions\AddDurations.cs" />
+    <Compile Include="User Defined Types\DurationFunctions\MultiplyDuration.cs" />
+    <Compile Include="User Defined Types\DurationFunctions\DivideDuration.cs" />
+    <Compile Include="User Defined Types\DurationFunctions\SubtractDurations.cs" />
+    <Compile Include="User Defined Types\DurationFunctions\NegateDuration.cs" />
+    <Compile Include="User Defined Types\DurationFunctions\DurationFromDatetimes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\SQLCLR.publish.xml" />
