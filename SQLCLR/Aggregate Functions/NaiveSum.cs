@@ -6,7 +6,11 @@ using System.IO;
 
 
 /*******************************
-    Warning: This is intentionally a bad example
+    Warning: This is intentionally a bad example!
+        Specifically, we needn't keep the entire
+        list in order to keep a sum since addition
+        is commutative (i.e. a+b = b+a) and 
+        associative (i.e. a + (b + c) = (a + b) + c).
 *******************************/
 
 [Serializable]
@@ -16,9 +20,9 @@ using System.IO;
     IsInvariantToDuplicates = false,
     IsInvariantToOrder = true,
     IsInvariantToNulls = true,
-    Name = "DumbSum"
+    Name = "NaiveSum"
 )]
-public struct DumbSum : IBinarySerialize
+public struct NaiveSum : IBinarySerialize
 {
     private List<double> _list;
     public void Init()
@@ -34,7 +38,7 @@ public struct DumbSum : IBinarySerialize
         }
     }
 
-    public void Merge (DumbSum Group)
+    public void Merge (NaiveSum Group)
     {
         _list.AddRange(Group._list);
     }

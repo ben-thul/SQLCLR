@@ -19,9 +19,9 @@ public partial class UserDefinedFunctions
             CultureInfo ci = new CultureInfo(_culture);
             return new SqlString(Amount.Value.ToString("C", ci));
         }
-        catch (CultureNotFoundException e)
+        catch (CultureNotFoundException)
         {
-            return new SqlString("Invalid culture");
+            return new SqlString("Invalid culture '" + culture.Value + "'");
         }
     }
 }

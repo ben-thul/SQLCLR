@@ -9,6 +9,6 @@ public partial class UserDefinedFunctions
     {
         Double myValue = value.Value;
 
-        return (SqlDouble)Math.Round(myValue, places.Value, MidpointRounding.ToEven);
+        return Math.Round(myValue, places.Value, MidpointRounding.ToEven);
     }
 }

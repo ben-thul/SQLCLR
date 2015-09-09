@@ -16,10 +16,12 @@ using System.IO;
 )]
 public class Concatenate : IBinarySerialize
 {
+    private List<String> _elements;
+    private string _delimiter;
+
     public void Init()
     {
         _elements = new List<String>();
-        _delimiter = "||";
     }
 
     public void Accumulate(SqlString Value, SqlString delimiter)
@@ -79,7 +81,4 @@ public class Concatenate : IBinarySerialize
             _elements.Add(r.ReadString());
         }
     }
-
-    private List<String> _elements;
-    private String _delimiter;
 }
