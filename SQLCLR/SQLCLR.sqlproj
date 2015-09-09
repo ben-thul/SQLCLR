@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{6781cdc3-ca58-4a70-9a4c-7ac9f8cf0db3}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -62,31 +62,32 @@
     <Folder Include="Table Functions" />
     <Folder Include="Aggregate Functions" />
     <Folder Include="Table Functions\Helper Functions" />
-    <Folder Include="Stored Procedures" />
+    <Folder Include="User Defined Types" />
+    <Folder Include="User Defined Types\DurationFunctions" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.SqlServer.Smo">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\Microsoft.SqlServer.Smo.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.SqlServer.ConnectionInfo">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Scalar Functions\BankersRound.cs" />
     <Compile Include="Aggregate Functions\Concatenate.cs" />
-    <Compile Include="Aggregate Functions\NaiveSum.cs" />
+    <Compile Include="Aggregate Functions\DumbSum.cs" />
     <Compile Include="Aggregate Functions\SmarterSum.cs" />
     <Compile Include="Scalar Functions\FormatCurrency.cs" />
     <Compile Include="Aggregate Functions\Median.cs" />
     <Compile Include="Table Functions\Helper Functions\NextToken.cs" />
-    <Compile Include="Stored Procedures\GetTableDefinition.cs" />
+    <Compile Include="User Defined Types\ComplexNumber.cs" />
+    <Compile Include="Scalar Functions\RegexMatch.cs" />
+    <Compile Include="User Defined Types\Duration.cs" />
+    <Compile Include="User Defined Types\DurationFunctions\AddDurations.cs" />
+    <Compile Include="User Defined Types\DurationFunctions\MultiplyDuration.cs" />
+    <Compile Include="User Defined Types\DurationFunctions\DivideDuration.cs" />
+    <Compile Include="User Defined Types\DurationFunctions\SubtractDurations.cs" />
+    <Compile Include="User Defined Types\DurationFunctions\NegateDuration.cs" />
+    <Compile Include="User Defined Types\DurationFunctions\DurationFromDatetimes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\SQLCLR.publish.xml" />
@@ -94,5 +95,8 @@
   <ItemGroup>
     <Compile Include="Table Functions\RegexSplit.cs" />
     <Compile Include="Table Functions\StringSplit.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DebugScript.sql" />
   </ItemGroup>
 </Project>

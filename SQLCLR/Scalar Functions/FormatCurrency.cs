@@ -3,7 +3,11 @@ using System.Globalization;
 
 public partial class UserDefinedFunctions
 {
-    [Microsoft.SqlServer.Server.SqlFunction]
+    [Microsoft.SqlServer.Server.SqlFunction(
+        IsDeterministic = true, 
+        IsPrecise = true, 
+        DataAccess = Microsoft.SqlServer.Server.DataAccessKind.None
+    )]
     public static SqlString FormatCurrency(SqlDouble Amount, SqlString culture)
     {
         string _culture;
