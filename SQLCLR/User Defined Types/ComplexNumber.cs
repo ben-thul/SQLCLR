@@ -65,13 +65,12 @@ public struct ComplexNumber: INullable, IBinarySerialize
         return cn;
     }
     
-    // This is a place-holder method
     public ComplexNumber Add(ComplexNumber other)
     {
         return new ComplexNumber(Complex.Add(_complex, other._complex));
     }
 
-    public ComplexNumber Subract(ComplexNumber other)
+    public ComplexNumber Subtract(ComplexNumber other)
     {
         return new ComplexNumber(Complex.Subtract(_complex, other._complex));
     }

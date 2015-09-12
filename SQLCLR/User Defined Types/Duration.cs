@@ -7,12 +7,13 @@ using System.IO;
 
 
 [Serializable]
-[SqlUserDefinedType(Format.UserDefined,
-    MaxByteSize = sizeof(long),
+[SqlUserDefinedType(
+    Format.UserDefined,
+    MaxByteSize = sizeof(long) + sizeof(bool),
     IsFixedLength = true,
     IsByteOrdered = true
 )]
-public struct Duration: INullable, IBinarySerialize
+public class Duration: INullable, IBinarySerialize, IComparable
 {
     private TimeSpan _ts;
     private bool _null;
@@ -21,6 +22,10 @@ public struct Duration: INullable, IBinarySerialize
     {
         _ts = ts;
         _null = false;
+    }
+
+    public Duration()
+    {
     }
 
     public override string ToString()
@@ -65,11 +70,19 @@ public struct Duration: INullable, IBinarySerialize
         
     public void Write(BinaryWriter w)
     {
+        w.Write(_null);
         w.Write(_ts.Ticks);
     }
 
     public void Read(BinaryReader r)
     {
+        _null = r.ReadBoolean();
         _ts = new TimeSpan(r.ReadInt64());
+    }
+
+    public int CompareTo(object obj)
+    {
+        Duration otherDuration = (Duration)obj;
+        return _ts.CompareTo(otherDuration._ts);
     }
 }

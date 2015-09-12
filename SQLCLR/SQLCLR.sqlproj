@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{6781cdc3-ca58-4a70-9a4c-7ac9f8cf0db3}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -64,6 +64,7 @@
     <Folder Include="Table Functions\Helper Functions" />
     <Folder Include="User Defined Types" />
     <Folder Include="User Defined Types\DurationFunctions" />
+    <Folder Include="DebugScripts" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -74,7 +75,6 @@
   <ItemGroup>
     <Compile Include="Scalar Functions\BankersRound.cs" />
     <Compile Include="Aggregate Functions\Concatenate.cs" />
-    <Compile Include="Aggregate Functions\DumbSum.cs" />
     <Compile Include="Aggregate Functions\SmarterSum.cs" />
     <Compile Include="Scalar Functions\FormatCurrency.cs" />
     <Compile Include="Aggregate Functions\Median.cs" />
@@ -88,15 +88,27 @@
     <Compile Include="User Defined Types\DurationFunctions\SubtractDurations.cs" />
     <Compile Include="User Defined Types\DurationFunctions\NegateDuration.cs" />
     <Compile Include="User Defined Types\DurationFunctions\DurationFromDatetimes.cs" />
+    <Compile Include="Aggregate Functions\NaiveSum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\SQLCLR.publish.xml" />
+    <None Include="DebugScripts\RegexMatch.sql" />
+    <None Include="DebugScripts\Duration.sql" />
+    <None Include="DebugScripts\ComplexNumber.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Table Functions\RegexSplit.cs" />
     <Compile Include="Table Functions\StringSplit.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DebugScript.sql" />
+    <None Include="DebugScripts\GROUP_CONCAT.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DebugScripts\Sums.sql" />
+    <None Include="DebugScripts\Median.sql" />
+    <None Include="DebugScripts\BankersRounding.sql" />
+    <None Include="DebugScripts\FormatCurrency.sql" />
+    <None Include="DebugScripts\StringSplit.sql" />
+    <None Include="DebugScripts\RegexSplit.sql" />
   </ItemGroup>
 </Project>

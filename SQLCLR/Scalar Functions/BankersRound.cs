@@ -4,7 +4,8 @@ using Microsoft.SqlServer.Server;
 
 public partial class UserDefinedFunctions
 {
-    [SqlFunction(DataAccess=DataAccessKind.None, 
+    [SqlFunction(
+        DataAccess=DataAccessKind.None, 
         IsDeterministic = true, 
         IsPrecise = true
     )]

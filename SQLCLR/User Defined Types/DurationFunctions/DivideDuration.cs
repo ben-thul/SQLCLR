@@ -10,7 +10,7 @@ public partial class UserDefinedFunctions
     public static Duration DivideDuration(Duration d, SqlDouble m)
     {
         long ticks = d.timeSpan.Ticks;
-        ticks = (long)(ticks * m.Value);
+        ticks = (long)(ticks / m.Value);
         return new Duration(TimeSpan.FromTicks(ticks));
     }
 }
