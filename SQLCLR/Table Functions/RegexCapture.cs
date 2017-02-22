@@ -1,11 +1,8 @@
 using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 using System.Text.RegularExpressions;
 using System.Collections;
-using System.Collections.Generic;
 
 public partial class UserDefinedFunctions
 {
@@ -14,7 +11,6 @@ public partial class UserDefinedFunctions
             SystemDataAccess = SystemDataAccessKind.None,
             FillRowMethodName = "NextMatch",
             TableDefinition = "n int, token nvarchar(max)"
-
     )]
     public static IEnumerable RegexCapture(SqlString toBeSplit, SqlString regex)
     {
@@ -52,7 +48,6 @@ public partial class UserDefinedFunctions
     {
         public int index { get; set; }
         public string text { get; set; }
-
         public MyMatch(int index, string text)
         {
             this.index = index;
