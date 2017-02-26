@@ -89,6 +89,7 @@
     <Compile Include="User Defined Types\DurationFunctions\NegateDuration.cs" />
     <Compile Include="User Defined Types\DurationFunctions\DurationFromDatetimes.cs" />
     <Compile Include="Aggregate Functions\NaiveSum.cs" />
+    <Compile Include="Table Functions\RegexCapture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\SQLCLR.publish.xml" />
