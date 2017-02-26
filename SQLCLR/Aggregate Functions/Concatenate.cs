@@ -16,12 +16,12 @@ using System.IO;
 )]
 public class Concatenate : IBinarySerialize
 {
-    private List<String> _elements;
+    private List<string> _elements;
     private string _delimiter;
 
     public void Init()
     {
-        _elements = new List<String>();
+        _elements = new List<string>();
     }
 
     public void Accumulate(SqlString Value, SqlString delimiter)
@@ -65,7 +65,7 @@ public class Concatenate : IBinarySerialize
     {
         w.Write(_delimiter);
         w.Write(_elements.Count);
-        foreach (String s in _elements)
+        foreach (string s in _elements)
         {
             w.Write(s);
         }

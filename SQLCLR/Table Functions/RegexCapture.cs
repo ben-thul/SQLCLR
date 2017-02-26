@@ -21,7 +21,7 @@ public partial class UserDefinedFunctions
         }
         catch
         {
-            String message = "'" + regex.Value + "' does not appear to be a valid regex.";
+            string message = "'" + regex.Value + "' does not appear to be a valid regex.";
             throw new Exception(message);
         }
         Match m = r.Match(toBeSplit.Value);

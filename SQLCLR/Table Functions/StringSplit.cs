@@ -5,7 +5,7 @@ using System.Data.SqlTypes;
 
 public partial class UserDefinedFunctions
 {
-    [Microsoft.SqlServer.Server.SqlFunction(
+    [SqlFunction(
         DataAccess=DataAccessKind.None,
         Name="StringSplit",
         SystemDataAccess=SystemDataAccessKind.None,
@@ -15,17 +15,15 @@ public partial class UserDefinedFunctions
 
     public static IEnumerable StringSplit(SqlString toBeSplit, SqlString delimiter)
     {
-        String d = delimiter.Value;
+        string d = delimiter.Value;
         if (d.Length > 1)
         {
             throw new Exception("Delimiter longer than one character");
         }
         char[] delimiters = d.ToCharArray();
-        ArrayList tokens = new ArrayList();
-        foreach (String t in toBeSplit.Value.Split(delimiters)) 
+        foreach (string t in toBeSplit.Value.Split(delimiters)) 
         {
-            tokens.Add(t);
+            yield return t;
         }
-        return tokens;
     }
 }

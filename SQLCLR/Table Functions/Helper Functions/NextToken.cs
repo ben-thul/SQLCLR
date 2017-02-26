@@ -6,6 +6,6 @@ public partial class UserDefinedFunctions
 
     public static void NextToken(object objToken, out SqlString token)
     {
-        token = (String)objToken;
+        token = (string)objToken;
     }
 }
