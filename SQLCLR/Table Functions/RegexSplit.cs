@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 public partial class UserDefinedFunctions
 {
-    [Microsoft.SqlServer.Server.SqlFunction(
+    [SqlFunction(
             DataAccess=DataAccessKind.None,
             SystemDataAccess=SystemDataAccessKind.None,
             FillRowMethodName="NextToken",
@@ -15,20 +15,18 @@ public partial class UserDefinedFunctions
     ]
     public static IEnumerable RegexSplit(SqlString toBesplit, SqlString regex)
     {
-        ArrayList tokens = new ArrayList();
         try
         {
             Regex r = new Regex(regex.Value);
         }
         catch
         {
-            String message = "'" + regex.Value + "' does not appear to be a valid regex.";
+            string message = "'" + regex.Value + "' does not appear to be a valid regex.";
             throw new Exception(message);
         }
-        foreach (String t in Regex.Split(toBesplit.Value, regex.Value))
+        foreach (string t in Regex.Split(toBesplit.Value, regex.Value))
         {
-            tokens.Add(t);
+            yield return t;
         }
-        return tokens;
     }
 }
